@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import Home from './LogDisplay/componts/home';
 
-AppRegistry.registerComponent('LogDisplay', () => App);
+AppRegistry.registerComponent('LogDisplay', () => Home);
