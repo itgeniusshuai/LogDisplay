@@ -2,10 +2,10 @@ var config = {
     carouselBottom : 30,
     carouselDelay : 5000,
     carouselPics : [
-        "../pic/a.jpg",
-        "../pic/b.jpg",
-        "../pic/c.jpg",
-        "../pic/d.jpg",
+        require("../pic/a.jpg"),
+        require("../pic/b.jpg"),
+        require("../pic/c.jpg"),
+        require("../pic/d.jpg"),
     ]
 }
 

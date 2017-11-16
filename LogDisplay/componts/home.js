@@ -6,7 +6,6 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native'
-import Swiper from 'react-native-swiper';
 import WINDOW_SIZE from '../common/const';
 import Carousel from 'react-native-carousel';
 import config from '../common/config';
@@ -15,36 +14,27 @@ import config from '../common/config';
 class Home extends Component {
     
     _onStartApp(){
-        alert("fsdf")
+        this.props.navigation.navigate('Login');
     }
     render() {
-        // var PicViews = config.carouselPics.map((pic) => {
-        //     alert(pic)
-        //     return (<View style={styles.img}>
-        //         {/* <Image source={require(pic)}  style={styles.img}/> */}
-        //         <Text>{pic}</Text>
-        //     </View>)
-        // });
+        var picCount = config.carouselPics.length;
         return (
             <Carousel  delay={config.carouselDelay} 
                 loop={false} style={styles.wrapper} 
                 indicatorOffset={config.carouselBottom}
                 >
-                <View style={styles.img}>
-                    <Image source={require('../pic/a.jpg')}  style={styles.img}/>
-                </View>
-                <View style={styles.img}>
-                    <Image source={require('../pic/b.jpg')}  style={styles.img}/>
-                </View>
-                <View style={styles.img}>
-                    <Image source={require('../pic/a.jpg')} style={styles.img}/>
-                </View> 
-                <View style={styles.img}>
-                    <Image source={require('../pic/d.jpg')}  style={styles.img}/>
-                    <TouchableOpacity style={styles.button} onPress={this._onStartApp}>
-                        <Text style={styles.btnText}>进入应用</Text>
-                    </TouchableOpacity>
-                </View> 
+                {config.carouselPics.map((img,index) => (
+                    (index != picCount-1)?(<View style={styles.img} key={index}>
+                        <Image source={img}  style={styles.img}/>
+                    </View>):(
+                        <View style={styles.img} key={index}>
+                        <Image source={img}  style={styles.img}/>
+                        <TouchableOpacity style={styles.button} onPress={this._onStartApp.bind(this)}>
+                            <Text style={styles.btnText}>进入应用</Text>
+                        </TouchableOpacity>
+                    </View> 
+                    )
+                ))}
             </Carousel>
 
         )
