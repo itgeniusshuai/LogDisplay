@@ -12,6 +12,9 @@ const RootNavigator = StackNavigator({
     },
     Login: {
       screen: Login,
+      navigationOptions:{
+        header: null
+      }
     }
 
 

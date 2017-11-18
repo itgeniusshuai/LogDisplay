@@ -20,13 +20,13 @@ class Login extends Component{
                     <View style={styles.subBox}>
                         <View style={styles.textArea}>
                             <Text style={styles.text}>姓 名：</Text>
-                            <TextInput style={styles.textInput}></TextInput>
+                            <TextInput style={styles.textInput} keyboardType='phone-pad' placeholder='姓  名'></TextInput>
                         </View>
                     </View>
                     <View style={styles.subBox}>
                         <View style={styles.textArea}>
                             <Text style={styles.text}>密 码：</Text>
-                            <TextInput style={styles.textInput}></TextInput>
+                            <TextInput style={styles.textInput} keyboardType='default' placeholder='密  码' secureTextEntry={true}></TextInput>
                         </View>
                     </View>
                     <View style={styles.subBox}>
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor:'rgba(255,0,0,0.8)'
     },
     box:{
         height:100,

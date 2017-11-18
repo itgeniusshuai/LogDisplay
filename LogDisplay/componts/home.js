@@ -9,14 +9,33 @@ import {
 import WINDOW_SIZE from '../common/const';
 import Carousel from 'react-native-carousel';
 import config from '../common/config';
-
+import { NavigationActions } from 'react-navigation'
+import '../common/global'
+import Storage from 'react-native-storage';
 
 class Home extends Component {
     
     _onStartApp(){
-        this.props.navigation.navigate('Login');
+        // 存储轮播过
+        storage.save({
+            key:'isCarousel',
+            data:1
+        });
+        const navigationAuction = NavigationActions.reset({index: 0,
+            actions: [
+              NavigationActions.navigate({ routeName: 'Login'})
+            ]});
+        this.props.navigation.dispatch(navigationAuction);
     }
     render() {
+        storage.load({key:'isCarousel'}).then( (ret) => {
+            alert(ret)
+            if(ret == 1){
+                this.props.navigate({routeName:'Login'})
+            }
+        }).catch( err => {
+            
+        });
         var picCount = config.carouselPics.length;
         return (
             <Carousel  delay={config.carouselDelay} 
