@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'rgba(255,0,0,0.8)'
+        backgroundColor:'cyan'
     },
     box:{
         height:100,

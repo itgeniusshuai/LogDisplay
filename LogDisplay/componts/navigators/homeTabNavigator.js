@@ -25,10 +25,8 @@ const Tab = TabNavigator(
         tabBarOptions:{  
           activeTintColor:'#06c1ae',  
           inactiveTintColor:'#979797',  
+        //   showLabel:false,
           style:{backgroundColor:'#ffffff',},  
-        //   labelStyle: {  
-        //         fontSize: 20, // 文字大小  
-        //     },  
         }  
           
       }  
