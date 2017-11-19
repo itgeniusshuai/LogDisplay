@@ -6,15 +6,14 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native'
-//import {navigationOptions} from 'react-navigation';  
-
-class HomeScreen extends Component {
+// import {navigationOptions} from 'react-navigation';  
+class UserScreen extends Component {
     static navigationOptions = {
-        // tabBarLabel: 'HomeScreen',
+        tabBarLabel: 'UserScreen',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
           <Image
-            source={require('../pic/note.png')}
+            source={require('../pic/user.png')}
             style={[styles.icon, {tintColor: tintColor}]}
           />
         ),
@@ -22,7 +21,7 @@ class HomeScreen extends Component {
    render(){
        return (
            <View>
-               <Text>home</Text>
+               <Text>user</Text>
            </View>
        );
    }
@@ -34,5 +33,4 @@ const styles = StyleSheet.create({
     },
   });
   
-
-export default HomeScreen;
+export default UserScreen;
