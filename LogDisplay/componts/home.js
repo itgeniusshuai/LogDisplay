@@ -7,7 +7,15 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native'
+class ItemSeparatorComponent extends Component{
+    render(){
+        return (
+            <View style={{backgroundColor:'black',height:1,width:'100%'}}>
 
+            </View>
+        );
+    }
+}
 class HomeScreen extends Component {
     static navigationOptions = {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
@@ -18,7 +26,15 @@ class HomeScreen extends Component {
           />
         ),
       };
-   render(){
+    _renderItem = ({item}) =>
+        (
+            <TouchableOpacity style={styles.item}>
+                <Text style={styles.itemText}>{item.key}</Text>
+            </TouchableOpacity>
+        );
+    _keyExtractor = (item, index) => item.id;
+    
+    render(){
        return (
            <View style={styles.container}>
                <View style={styles.title}>
@@ -26,8 +42,10 @@ class HomeScreen extends Component {
                 </View>
                <View style={styles.content}>
                 <FlatList
-                    data={[{key: 'a'}, {key: 'b'}]}
-                    renderItem={({item}) => <Text>{item.key}</Text>}
+                    data={[{key: 'a',id:1}, {key: 'b',id:2},{key: 'a',id:3}, {key: 'b',id:4}]}
+                    renderItem={this._renderItem}
+                    keyExtractor={this._keyExtractor}
+                    ItemSeparatorComponent={ItemSeparatorComponent}
                     />
                </View>
            </View>
@@ -61,7 +79,25 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     content:{
-        flex:9
+        flex:9,
+        width:'100%',
+    },
+    itemContainer:{
+        justifyContent:'center',
+        flexDirection:'column',
+        alignItems:'center',     
+    },
+    item:{
+        flex:1,
+        height:45,
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    itemText:{
+        fontSize:18,
+        textAlign:'center',
+        lineHeight:45,
+        flex:1
     }
 
   });
