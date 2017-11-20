@@ -26,40 +26,36 @@ class Login extends Component{
         let params = {};
         params.username=this.state.username;
         params.password=this.state.password;
-        const url = 'http://wwww.baidu.com'
-        // httpUtils.httpGet(url,params,null);
         this.props.navigation.navigate('Tab')
     }
     render(){
         return(
             <View style={styles.container}>
-                <View style={styles.box}>
-                    <View style={styles.subBox}>
-                        <View style={styles.textArea}>
-                            <Text style={styles.text}>姓 名：</Text>
-                            <TextInput style={styles.textInput} 
-                                keyboardType='phone-pad' 
-                                onChangeText={(e)=>{this.setState({'username':e})}}
-                                placeholder='姓  名'></TextInput>
-                        </View>
-                    </View>
-                    <View style={styles.subBox}>
-                        <View style={styles.textArea}>
-                            <Text style={styles.text}>密 码：</Text>
-                            <TextInput style={styles.textInput} 
-                                keyboardType='default' 
-                                placeholder='密  码' 
-                                onChangeText={(e)=>{this.setState({'password':e})}}
-                                secureTextEntry={true}></TextInput>
-                        </View>
-                    </View>
-                    <View style={styles.subBox}>
-                        <View style={styles.textArea}>
-                            <TouchableOpacity style={styles.btn} onPress={this.login.bind(this)}>
-                                <Text style={{width:'50%',textAlign:'center'}}>登       录</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+                <View style={styles.imgView}>
+                    <Image style={styles.img} source={require('../pic/login1.jpg')}/>
+                </View>
+                <View style={styles.inputView}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='用户名'
+                        onChangeText={(e)=>{this.setState({'username':e})}}
+                    />
+                    <TextInput 
+                        style={styles.input}
+                        placeholder='密码'
+                        onChangeText={(e)=>{this.setState({'password':e})}}
+                        />
+                </View>
+                <View style={styles.btnView}>
+                    <TouchableOpacity style={styles.btn} onPress={this.login.bind(this)}>
+                        <Text style={styles.btnText}>登录</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btn}>
+                        <Text style={styles.btnText}>注册</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.forgetView}>
+                    <Text style={styles.forget} onPress={() => alert('forget')}>忘记密码</Text>
                 </View>
             </View>
         );
@@ -69,48 +65,62 @@ class Login extends Component{
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        flexDirection:'row',
-        justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'cyan'
     },
-    box:{
+    imgView:{
+        height:230,
+        width:'100%',
+        marginTop:60,
+    },
+    img:{
+        height:230,
+        width:WINDOW_SIZE.ScreenWidth
+    },
+    inputView:{
         height:100,
-        width:150,
-        justifyContent:'center',
+        width:'100%',
+        marginTop:10,
         flexDirection:'column',
-        flex:1,
-        alignItems:'center'
-    },
-    subBox:{
-        flex:1,
         justifyContent:'center',
-        flexDirection:'row',
         alignItems:'center',
     },
-    textArea:{
-        width:'50%',
+    input:{
+        marginTop:5,
+        height:45,
+        width:WINDOW_SIZE.ScreenWidth - 40,
+        borderBottomWidth:1
+    },
+    btnView:{
+        marginTop:10,
+        height:110,
+        width:'100%',
+        marginTop:10,
+        flexDirection:'column',
         justifyContent:'center',
-        flexDirection:'row',
         alignItems:'center',
-        height:'100%',
-    },
-    text:{
-        flex:1,
-    },
-    textInput:{
-        flex:3,
     },
     btn:{
-        flex:1,
-        justifyContent:'center',
+        marginTop:10,
+        height:45,
+        width:WINDOW_SIZE.ScreenWidth - 40,
+        backgroundColor:'#2f2f2f'
+    },
+    btnText:{
+        lineHeight:45,
+        textAlign:'center'
+    },
+    forgetView:{
+        marginTop:5,
+        height:25,
+        width:WINDOW_SIZE.ScreenWidth - 40,
         flexDirection:'row',
+        justifyContent:'flex-end',
         alignItems:'center',
-        backgroundColor:'rgba(255,255,0,0.5)',
-        width:'100%'
+    },
+    forget:{
+        color:'red',
+        fontSize:18
     }
-
-
 });
 
 export default Login;
