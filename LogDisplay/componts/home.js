@@ -42,7 +42,7 @@ class HomeScreen extends Component {
                 </View>
                <View style={styles.content}>
                 <FlatList
-                    data={[{key: 'a',id:1}, {key: 'b',id:2},{key: 'a',id:3}, {key: 'b',id:4}]}
+                    data={[{key: 'a',id:1}, {key: 'b',id:2},{key: 'c',id:3}, {key: 'd',id:4}]}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
                     ItemSeparatorComponent={ItemSeparatorComponent}
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         fontSize:18,
         textAlign:'center',
         lineHeight:45,
-        flex:1
+        // flex:1
     }
 
   });

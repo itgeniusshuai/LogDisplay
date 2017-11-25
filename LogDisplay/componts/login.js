@@ -48,9 +48,9 @@ class Login extends Component{
             stateObj.flagLogindisabled = (this.state.username == '' || e == '' ?true:false);
         }
         if(stateObj.flagLogindisabled){
-            this.loginBackgroundColor = disBgColor
+            stateObj.loginBackgroundColor = disBgColor
         }else{
-            this.loginBackgroundColor = bgColor
+            stateObj.loginBackgroundColor = bgColor
         }
         this.setState(stateObj) //4006601169
     }
@@ -74,8 +74,8 @@ class Login extends Component{
                         />
                 </View>
                 <View style={styles.btnView}>
-                    <TouchableHighlight style={[styles.btn,{backgroundColor:disBgColor}]} onPress={this.login.bind(this)} disabled={this.state.flagLogindisabled}>
-                        <Text style={[styles.btnText,{backgroundColor:this.loginBackgroundColor}]}>登录</Text>
+                    <TouchableHighlight style={[styles.btn,{backgroundColor:this.state.loginBackgroundColor}]} onPress={this.login.bind(this)} disabled={this.state.flagLogindisabled}>
+                        <Text style={[styles.btnText]}>登录</Text>
                     </TouchableHighlight>
                     <TouchableOpacity style={styles.btn}>
                         <Text style={styles.btnText}>注册</Text>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         marginTop:10,
         height:45,
         width:WINDOW_SIZE.ScreenWidth - 40,
-        backgroundColor:'#232323'
+        backgroundColor:'rgba(35,35,35,1)'
     },
     btnText:{
         lineHeight:45,
