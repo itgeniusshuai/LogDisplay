@@ -25,7 +25,7 @@ const Tab = TabNavigator(
         tabBarOptions:{  
           activeTintColor:'#06c1ae',  
           inactiveTintColor:'#979797',  
-        //   showLabel:false,
+        //   showLabel:false,`
           style:{backgroundColor:'#ffffff',},  
         }  
           

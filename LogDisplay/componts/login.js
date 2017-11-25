@@ -4,6 +4,7 @@ import {
     Text,
     View,
     Image,
+    TouchableHighlight,
     TouchableOpacity,
     TextInput
 } from 'react-native'
@@ -12,7 +13,9 @@ import Carousel from 'react-native-carousel';
 import config from '../common/config';
 import httpUtils from '../common/http';
 import Tab from './navigators/homeTabNavigator'
-
+import { NavigationActions } from 'react-navigation';
+const bgColor = 'rgba(35,35,35,1)'
+const disBgColor = 'rgba(35,35,35,0.2)'
 
 class Login extends Component{
     constructor(props){
@@ -20,13 +23,36 @@ class Login extends Component{
         this.state={
             'username':'',
             'password':'',
+            'flagLogindisabled':true,
+            'loginBackgroundColor': disBgColor
         }
     }
     login(){
         let params = {};
         params.username=this.state.username;
         params.password=this.state.password;
-        this.props.navigation.navigate('Tab')
+        const tabAuction = NavigationActions.reset({index: 0,
+            actions: [
+              NavigationActions.navigate({ routeName: 'Tab'})
+            ]})
+        this.props.navigation.dispatch(tabAuction)
+    }
+    _onChangeText(type,e){
+        let stateObj = {}
+        if(type == 'username'){
+            stateObj.username = e
+            stateObj.flagLogindisabled = (this.state.password == '' || e == '' ?true:false);
+            
+        }else if(type == 'password'){
+            stateObj.password = e
+            stateObj.flagLogindisabled = (this.state.username == '' || e == '' ?true:false);
+        }
+        if(stateObj.flagLogindisabled){
+            this.loginBackgroundColor = disBgColor
+        }else{
+            this.loginBackgroundColor = bgColor
+        }
+        this.setState(stateObj) //4006601169
     }
     render(){
         return(
@@ -38,18 +64,19 @@ class Login extends Component{
                     <TextInput
                         style={styles.input}
                         placeholder='用户名'
-                        onChangeText={(e)=>{this.setState({'username':e})}}
+                        onChangeText={(e)=>{this._onChangeText('username',e)}
+                            }
                     />
                     <TextInput 
                         style={styles.input}
                         placeholder='密码'
-                        onChangeText={(e)=>{this.setState({'password':e})}}
+                        onChangeText={(e)=>{this._onChangeText('password',e)}}
                         />
                 </View>
                 <View style={styles.btnView}>
-                    <TouchableOpacity style={styles.btn} onPress={this.login.bind(this)}>
-                        <Text style={styles.btnText}>登录</Text>
-                    </TouchableOpacity>
+                    <TouchableHighlight style={[styles.btn,{backgroundColor:disBgColor}]} onPress={this.login.bind(this)} disabled={this.state.flagLogindisabled}>
+                        <Text style={[styles.btnText,{backgroundColor:this.loginBackgroundColor}]}>登录</Text>
+                    </TouchableHighlight>
                     <TouchableOpacity style={styles.btn}>
                         <Text style={styles.btnText}>注册</Text>
                     </TouchableOpacity>
@@ -103,7 +130,7 @@ const styles = StyleSheet.create({
         marginTop:10,
         height:45,
         width:WINDOW_SIZE.ScreenWidth - 40,
-        backgroundColor:'#2f2f2f'
+        backgroundColor:'#232323'
     },
     btnText:{
         lineHeight:45,
