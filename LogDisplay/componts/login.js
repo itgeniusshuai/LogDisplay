@@ -12,7 +12,7 @@ import WINDOW_SIZE from '../common/const';
 import Carousel from 'react-native-carousel';
 import config from '../common/config';
 import httpUtils from '../common/http';
-import Tab from './navigators/homeTabNavigator'
+import Tab from './navigators/globalNavigators'
 import { NavigationActions } from 'react-navigation';
 const bgColor = 'rgba(35,35,35,1)'
 const disBgColor = 'rgba(35,35,35,0.2)'

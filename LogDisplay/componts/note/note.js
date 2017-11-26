@@ -16,7 +16,7 @@ class ItemSeparatorComponent extends Component{
         );
     }
 }
-class HomeScreen extends Component {
+class NoteScreen extends Component {
     static navigationOptions = {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default HomeScreen;
+export default NoteScreen;

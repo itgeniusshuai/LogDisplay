@@ -1,14 +1,14 @@
 import React,{Component} from 'react';  
 import {Image} from 'react-native';  
 import {TabNavigator,TabBarBottom} from 'react-navigation';  
-import HomeScreen from '../home';
-import UserScreen from '../user';
+import NoteScreen from '../note/note';
+import UserScreen from '../user/user';
 
 
 const Tab = TabNavigator(  
     {
       Note:{  
-        screen:HomeScreen,  
+        screen:NoteScreen,  
       },  
     
       User:{  
