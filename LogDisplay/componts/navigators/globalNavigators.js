@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {StackNavigator} from 'react-navigation'
-import Home from '../home';
 import Login from '../login'
 import Guide from '../guide'
 import Tab from './homeTabNavigator'
+import NoteListItem from '../note/noteListItem'
 
 const RootNavigator = StackNavigator({
     // Guide:{
@@ -29,7 +29,11 @@ const RootNavigator = StackNavigator({
       navigationOptions:{
         header: null
       }
+    },
+    NoteListItem:{
+      screen:NoteListItem,
     }
+
 
 
   });

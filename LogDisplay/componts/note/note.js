@@ -10,9 +10,7 @@ import {
 class ItemSeparatorComponent extends Component{
     render(){
         return (
-            <View style={{backgroundColor:'black',height:1,width:'100%'}}>
-
-            </View>
+            <View style={{backgroundColor:'black',height:2,width:'100%'}} />
         );
     }
 }
@@ -21,14 +19,18 @@ class NoteScreen extends Component {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
           <Image
-            source={require('../pic/note.png')}
+            source={require('../..//pic/note.png')}
             style={[styles.icon, {tintColor: tintColor}]}
           />
         ),
-      };
+    };
+    _onPress(key,e){
+        this.props.navigation.navigate('NoteListItem',{key:key});
+    }
+
     _renderItem = ({item}) =>
         (
-            <TouchableOpacity style={styles.item}>
+            <TouchableOpacity style={styles.item} onPress={(e)=>{this._onPress(item.key,e)}}>
                 <Text style={styles.itemText}>{item.key}</Text>
             </TouchableOpacity>
         );
